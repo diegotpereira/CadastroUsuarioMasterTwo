@@ -128,7 +128,7 @@ ul li {
 
 		</div>
 	</fieldset>
-	<div id="rodape">Diego WebSystemMaster - Todos os direitos reservados @2020</div>
+	<div id="rodape">Diego Pereira WebSystemMaster - Todos os direitos reservados @2020</div>
 
 </body>
 </html>

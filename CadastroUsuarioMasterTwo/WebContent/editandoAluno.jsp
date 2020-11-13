@@ -129,8 +129,7 @@ ul li {
 			</form>
 		</div>
 	</fieldset>
-	<div id="rodape">Dougllas WebSystems - Todos os direitos
-		reservados</div>
+	<div id="rodape">Diego Pereira WebSystemMaster - Todos os direitos reservados @2020</div>
 
 </body>
 </html>
