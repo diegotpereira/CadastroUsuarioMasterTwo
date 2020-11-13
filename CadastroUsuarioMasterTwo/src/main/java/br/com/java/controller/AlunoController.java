@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.java.dao.AlunoDaoImpl;
+import br.com.java.dao.AlunoDao;
 import br.com.java.model.Aluno;
 
 public class AlunoController extends HttpServlet {
@@ -46,29 +46,29 @@ public class AlunoController extends HttpServlet {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		AlunoDaoImpl dao = new AlunoDaoImpl();
-		Aluno aluno = getParameters(request);
+		AlunoDao dao = new AlunoDao();
+		//Aluno aluno = new Aluno();
 		
 		List<Aluno> alunos = new ArrayList<>();
 		
 		switch (action) {
 		case "salvar":
-			dao.adicionar(aluno);
-			alunos = dao.getTodos();
+			dao.inserir(aluno);
+			alunos = dao.todos();
 			break;
 			
 		case "editar":
 			dao.atualizar(aluno);
-			alunos = dao.getTodos();
+			alunos = dao.todos();
 			break;
 			
 		case "deletar":
-			dao.remover(aluno.getId());
-			alunos = dao.getTodos();
+			dao.remover(aluno);
+			alunos = dao.todos();
 			break;
 			
 		case"pesquisar":
-			aluno = dao.achar(aluno.getId());
+			aluno = dao.pesquizarId(aluno.getId());
 			alunos.add(aluno);
 			break;
 		}
@@ -77,19 +77,19 @@ public class AlunoController extends HttpServlet {
 		request.getRequestDispatcher(pagina).forward(request, response);
 	}
 	public void doGet(HttpServletRequest request,
-			 HttpServletResponse response) {
+			 HttpServletResponse response) throws ServletException, IOException {
 		
-		AlunoDaoImpl dao = new AlunoDaoImpl();
+		AlunoDao dao = new AlunoDao();
 		
 		if (request.getParameter("action").equals("listar")) {
-			List<Aluno>alunos = dao.getTodos();
+			List<Aluno>alunos = dao.todos();
 			request.setAttribute("alunos", alunos);
 			request.getRequestDispatcher("consultaAlunos.jsp").forward(request, response);
 		}else if (request.getParameter("action").equals("editando")) {
 			String id = request.getParameter("id");
 			int idAluno = Integer.parseInt(id);
 			
-			Aluno aluno = dao.achar(idAluno);
+			Aluno aluno = dao.pesquizarId(idAluno);
 			
 			request.setAttribute("aluno", aluno);
 			request.getRequestDispatcher("edutandoAluno.jsp").forward(request, response);
