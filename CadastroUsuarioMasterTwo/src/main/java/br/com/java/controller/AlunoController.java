@@ -1,6 +1,7 @@
 package br.com.java.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,27 +42,30 @@ public class AlunoController extends HttpServlet {
 		   aluno.setIdade(Integer.parseInt(request.getParameter("idade")));
 		   
 		   try {
-			Calendar c = Calendar.getInstance();
-			Date datanascimento = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataNascimento"));
-			c.setTime(datanascimento);
+			   DateFormat df = new SimpleDateFormat("dd/MM/yyyy");	
+			   aluno.setDataNascimento(df.parse(request.getParameter("dataNascimento")));
+//			Calendar c = Calendar.getInstance();
+//			Date datanascimento = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataNascimento"));
+//			c.setTime(datanascimento);
 		} catch (ParseException e) {
 			// TODO: handle exception
+			aluno.setDataNascimento(new Date());
 			e.printStackTrace();
 		}
 		AlunoDao dao = new AlunoDao();
-		//Aluno aluno = new Aluno();
+//		Aluno aluno = new Aluno();
 		
 		List<Aluno> alunos = new ArrayList<>();
 		
 		switch (action) {
 		case "salvar":
 			dao.inserir(aluno);
-			alunos = dao.todos();
+//			alunos = dao.todos();
 			break;
 			
 		case "editar":
 			dao.atualizar(aluno);
-			alunos = dao.todos();
+//			alunos = dao.todos();
 			break;
 			
 		case "deletar":
@@ -73,6 +77,10 @@ public class AlunoController extends HttpServlet {
 			aluno = dao.pesquizarId(aluno.getId());
 			alunos.add(aluno);
 			break;
+			
+		case "listar":
+		dao.consultar(aluno);
+		break;
 		}
 		
 		request.setAttribute("alunos", alunos);
@@ -93,7 +101,7 @@ public class AlunoController extends HttpServlet {
 			Aluno aluno = dao.pesquizarId(idAluno);
 			
 			request.setAttribute("aluno", aluno);
-			request.getRequestDispatcher("/editandoAluno.jsp").forward(request, response);
+			request.getRequestDispatcher("editandoAluno.jsp").forward(request, response);
 			
 		}
 	}
