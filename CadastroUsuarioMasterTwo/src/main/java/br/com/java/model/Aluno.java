@@ -1,13 +1,21 @@
 package br.com.java.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 
-public class Aluno {
+public class Aluno implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
 	private int idade;
-	private Calendar dataNascimento;
+	private Date dataNascimento;
+	
+	public Aluno() {}
 	
 	public int getId() {
 		return id;
@@ -27,10 +35,13 @@ public class Aluno {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	public Calendar getDataNascimento() {
+
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(Calendar dataNascimento) {
+
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	
 }
