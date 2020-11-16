@@ -77,7 +77,7 @@ public class AlunoDao implements Dao{
 		// TODO Auto-generated method stub
 		Aluno aluno = new Aluno();
 		
-		String SQL = "Selec * from Aluno where id = ?";
+		String SQL = "Select * from Aluno where id = ?";
 		
 		try {
 			PS = CON.prepareStatement(SQL);

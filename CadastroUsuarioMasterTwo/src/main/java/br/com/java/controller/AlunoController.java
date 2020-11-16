@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.java.dao.AlunoDao;
 import br.com.java.model.Aluno;
 
+@WebServlet("/AlunoController")
 public class AlunoController extends HttpServlet {
 
 	/**
@@ -84,7 +86,6 @@ public class AlunoController extends HttpServlet {
 		if (request.getParameter("action").equals("listar")) {
 			List<Aluno>alunos = dao.todos();
 			request.setAttribute("alunos", alunos);
-			request.getRequestDispatcher("consultaAlunos.jsp").forward(request, response);
 		}else if (request.getParameter("action").equals("editando")) {
 			String id = request.getParameter("id");
 			int idAluno = Integer.parseInt(id);
@@ -92,7 +93,7 @@ public class AlunoController extends HttpServlet {
 			Aluno aluno = dao.pesquizarId(idAluno);
 			
 			request.setAttribute("aluno", aluno);
-			request.getRequestDispatcher("edutandoAluno.jsp").forward(request, response);
+			request.getRequestDispatcher("/editandoAluno.jsp").forward(request, response);
 			
 		}
 	}
