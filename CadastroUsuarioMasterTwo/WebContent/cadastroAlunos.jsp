@@ -89,7 +89,7 @@ ul li {
 	<ul>
 		<li><a href="cadastroAlunos.jsp">Cadastrar Aluno</a>
 		<li>
-		<li><a href="AlunoController?action=listar">Consultar Aluno</a>
+		<li><a href="AlunoController?action=consultar">Consultar Aluno</a>
 		<li>
 	</ul>
 	<fieldset>
@@ -100,28 +100,29 @@ ul li {
 				<table>
 					<tr>
 						<td>Id:</td>
-						<td><input type="text" name="id" size="5"></td>
+						<td><input type="text" name="id" value="${aluno.id}" size="5"></td>
 					</tr>
 					<tr>
 						<td>Nome:</td>
-						<td><input type="text" name="nome" size="40"></td>
+						<td><input type="text" name="nome" value="${aluno.nome}" size="40"></td>
 					</tr>
 					<tr>
 						<td>Idade:</td>
-						<td><input type="text" name="idade" size="5"></td>
+						<td><input type="text" name="idade" value="${aluno.idade}" size="5"></td>
 					</tr>
 					<tr>
 						<td>Data Nascimento:</td>
-						<td><input type="text" name="dataNascimento" size="10">
+						<td><input type="text" name="dataNascimento" value="${aluno.dataNascimento}" size="10">
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4"><input type="submit" name="action"
-							value="salvar" class="botao"> <input type="submit"
-							name="action" value="editar" class="botao"> <input
-							type="submit" name="action" value="deletar" class="botao">
-							<input type="submit" name="action" value="pesquisar"
-							class="botao"></td>
+						<td colspan="4">
+                                    <input type="submit" name="action"value="salvar" class="botao"> 
+                                    <input type="submit" name="action" value="editar" class="botao"> 
+                                    <input type="submit" name="action" value="deletar" class="botao">
+                              	    <input type="submit" name="action" value="pesquisar" class="botao">
+   
+                       </td>
 					</tr>
 				</table>
 			</form>
