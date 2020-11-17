@@ -33,11 +33,11 @@ public class AlunoController extends HttpServlet {
 		
 		Aluno aluno = new Aluno();
 		
-		if (!request.getParameter("id").equals("")
-				 || request.getParameter("id") != null) {
-			
-			aluno.setId(Integer.parseInt(request.getParameter("id")));
-		}
+//		if (!request.getParameter("id").equals("")
+//				 || request.getParameter("id") != null) {
+//			
+//			aluno.setId(Integer.parseInt(request.getParameter("id")));
+//		}
 		   aluno.setNome(request.getParameter("nome"));
 		   aluno.setIdade(Integer.parseInt(request.getParameter("idade")));
 		   
