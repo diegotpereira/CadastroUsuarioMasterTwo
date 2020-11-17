@@ -60,17 +60,17 @@ public class AlunoController extends HttpServlet {
 		switch (action) {
 		case "salvar":
 			dao.inserir(aluno);
-//			alunos = dao.todos();
+			alunos = dao.todos();
 			break;
 			
 		case "editar":
 			dao.atualizar(aluno);
-//			alunos = dao.todos();
+			alunos = dao.todos();
 			break;
 			
 		case "deletar":
 			dao.remover(aluno);
-			alunos = dao.listar();
+			alunos = dao.todos();
 			break;
 			
 		case"pesquisar":
@@ -78,10 +78,10 @@ public class AlunoController extends HttpServlet {
 			alunos.add(aluno);
 			break;
 			
-		case "listar":
-			alunos = dao.listar();
-//		dao.alunos(aluno);
-		break;
+//		case "listar":
+//			alunos = dao.todos();
+////		dao.alunos(aluno);
+//		break;
 		}
 		
 		request.setAttribute("alunos", alunos);
@@ -93,7 +93,7 @@ public class AlunoController extends HttpServlet {
 		AlunoDao dao = new AlunoDao();
 		
 		if (request.getParameter("action").equals("listar")) {
-			List<Aluno>alunos = dao.listar();
+			List<Aluno> alunos = dao.todos();
 			request.setAttribute("alunos", alunos);
 		}else if (request.getParameter("action").equals("editando")) {
 			String id = request.getParameter("id");

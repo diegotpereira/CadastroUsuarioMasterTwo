@@ -126,7 +126,7 @@ public class AlunoDao extends FabricaConexoes{
 	}
 
 //	@Override
-	public List<Aluno> listar() {
+	public List<Aluno> todos() {
 		// TODO Auto-generated method stub
 		List<Aluno> lista = new ArrayList<>();
 		String SQL = "Select * from Aluno";
