@@ -126,7 +126,7 @@ public class AlunoDao extends FabricaConexoes{
 	}
 
 //	@Override
-	public List<Aluno> todos() {
+	public List<Aluno> listar() {
 		// TODO Auto-generated method stub
 		List<Aluno> lista = new ArrayList<>();
 		String SQL = "Select * from Aluno";
@@ -142,11 +142,12 @@ public class AlunoDao extends FabricaConexoes{
 				Aluno aluno = new Aluno();
 				aluno.setId(RES.getInt("id"));
 				aluno.setNome(RES.getString("nome"));
-				Date data = RES.getDate("dataNascimento");
-				Calendar dt = Calendar.getInstance();
-				dt.setTime(data);
-				
 				aluno.setDataNascimento(new java.util.Date(RES.getDate("dataNascimento").getTime()));
+				Date data = RES.getDate("dataNascimento");
+//				Calendar dt = Calendar.getInstance();
+//				dt.setTime(data);
+//				
+//				aluno.setDataNascimento(new java.util.Date(RES.getDate("dataNascimento").getTime()));
 //				aluno.setDataNascimento(dt);
 				lista.add(aluno);
 				
