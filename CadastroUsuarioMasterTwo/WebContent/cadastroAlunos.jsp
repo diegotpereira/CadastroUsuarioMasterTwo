@@ -89,7 +89,7 @@ ul li {
 	<ul>
 		<li><a href="cadastroAlunos.jsp">Cadastrar Aluno</a>
 		<li>
-		<li><a href="AlunoController?action=consultar">Consultar Aluno</a>
+		<li><a href="AlunoController?action=listar">Consultar Aluno</a>
 		<li>
 	</ul>
 	<fieldset>
