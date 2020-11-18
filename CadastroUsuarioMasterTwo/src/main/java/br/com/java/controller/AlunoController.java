@@ -5,7 +5,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,27 +32,19 @@ public class AlunoController extends HttpServlet {
 		
 		Aluno aluno = new Aluno();
 		
-//		if (!request.getParameter("id").equals("")
-//				 || request.getParameter("id") != null) {
-//			
-//			aluno.setId(Integer.parseInt(request.getParameter("id")));
-//		}
 		   aluno.setNome(request.getParameter("nome"));
 		   aluno.setIdade(Integer.parseInt(request.getParameter("idade")));
 		   
 		   try {
 			   DateFormat df = new SimpleDateFormat("dd/MM/yyyy");	
 			   aluno.setDataNascimento(df.parse(request.getParameter("dataNascimento")));
-//			Calendar c = Calendar.getInstance();
-//			Date datanascimento = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("dataNascimento"));
-//			c.setTime(datanascimento);
+
 		} catch (ParseException e) {
 			// TODO: handle exception
 			aluno.setDataNascimento(new Date());
 			e.printStackTrace();
 		}
 		AlunoDao dao = new AlunoDao();
-//		Aluno aluno = new Aluno();
 		
 		List<Aluno> alunos = new ArrayList<>();
 		
@@ -77,11 +68,6 @@ public class AlunoController extends HttpServlet {
 			aluno = dao.pesquizarId(aluno.getId());
 			alunos.add(aluno);
 			break;
-			
-//		case "listar":
-//			alunos = dao.todos();
-////		dao.alunos(aluno);
-//		break;
 		}
 		
 		request.setAttribute("alunos", alunos);
