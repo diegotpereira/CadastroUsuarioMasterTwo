@@ -43,13 +43,15 @@ public class AlunoDao extends FabricaConexoes{
 		try {
 			Connection conexao = getConexao();
 			PreparedStatement PS = conexao
-					.prepareStatement("Update Aluno set nome = ?, idade = ?, dataNascimento = ?" +  " WHERE id = ? ");
+					.prepareStatement("Update Aluno set nome = ?, idade = ?, dataNascimento = ? where id = ?" );
 			PS.setString(1, aluno.getNome());
 			PS.setInt   (2, aluno.getIdade());
 			PS.setDate  (3, new java.sql.Date(aluno.getDataNascimento().getTime()));
-			PS.executeUpdate();
+			PS.setInt   (4, aluno.getId());
+			PS.execute();
 			PS.close();
-			//conexao.close();
+//			conexao.commit();
+			conexao.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

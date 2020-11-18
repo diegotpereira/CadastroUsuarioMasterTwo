@@ -31,6 +31,8 @@ public class AlunoController extends HttpServlet {
 		String pagina = "consultaAlunos.jsp";
 		
 		Aluno aluno = new Aluno();
+		AlunoDao dao = new AlunoDao();
+		List<Aluno> alunos = new ArrayList<>();
 		
 		   aluno.setNome(request.getParameter("nome"));
 		   aluno.setIdade(Integer.parseInt(request.getParameter("idade")));
@@ -44,9 +46,9 @@ public class AlunoController extends HttpServlet {
 			aluno.setDataNascimento(new Date());
 			e.printStackTrace();
 		}
-		AlunoDao dao = new AlunoDao();
 		
-		List<Aluno> alunos = new ArrayList<>();
+		
+		
 		
 		switch (action) {
 		case "salvar":
@@ -80,18 +82,23 @@ public class AlunoController extends HttpServlet {
 		
 		if (request.getParameter("action").equals("listar")) {
 			
-			List<Aluno> alunos = dao.todos();
-//			List<Aluno> alunos = new ArrayList<>();
-//			alunos = dao.todos();
+//			List<Aluno> alunos = dao.todos();
+			List<Aluno> alunos = new ArrayList<>();
+			alunos = dao.todos();
 			request.setAttribute("alunos", alunos);
 			request.getRequestDispatcher("consultaAlunos.jsp").forward(request, response);
 			
 		}else if (request.getParameter("action").equals("editando")) {
 			String id = request.getParameter("id");
-			int idAluno = Integer.parseInt(id);
+//			int idAluno = Integer.parseInt(id);
+//			
+//			Aluno aluno = dao.pesquizarId(idAluno);
 			
-			Aluno aluno = dao.pesquizarId(idAluno);
+//			Aluno aluno = new Aluno();
+//			dao.atualizar(aluno);
 			
+			Aluno aluno = new Aluno();
+			dao.atualizar(aluno);
 			request.setAttribute("aluno", aluno);
 			request.getRequestDispatcher("editandoAluno.jsp").forward(request, response);
 			
