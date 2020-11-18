@@ -90,14 +90,14 @@ public class AlunoController extends HttpServlet {
 			
 		}else if (request.getParameter("action").equals("editando")) {
 			String id = request.getParameter("id");
-//			int idAluno = Integer.parseInt(id);
-//			
-//			Aluno aluno = dao.pesquizarId(idAluno);
+			int idAluno = Integer.parseInt(id);
+			
+			Aluno aluno = dao.pesquizarId(idAluno);
 			
 //			Aluno aluno = new Aluno();
 //			dao.atualizar(aluno);
 			
-			Aluno aluno = new Aluno();
+//			Aluno aluno = new Aluno();
 			dao.atualizar(aluno);
 			request.setAttribute("aluno", aluno);
 			request.getRequestDispatcher("editandoAluno.jsp").forward(request, response);
