@@ -98,10 +98,10 @@ ul li {
 			<form action="AlunoController" method="post">
 
 				<table>
-<!-- 					<tr> -->
-<!-- 						<td>Id:</td> -->
-<%-- 						<td><input type="text" name="id" value="${aluno.id}" size="5"></td> --%>
-<!-- 					</tr> -->
+					<tr>
+						<td>Id:</td>
+						<td><input type="text" name="id" value="${aluno.id}" size="5"></td>
+					</tr>
 					<tr>
 						<td>Nome:</td>
 						<td><input type="text" name="nome" value="${aluno.nome}" size="40"></td>
