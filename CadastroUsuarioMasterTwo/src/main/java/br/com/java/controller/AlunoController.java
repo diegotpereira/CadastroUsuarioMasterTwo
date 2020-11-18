@@ -28,7 +28,7 @@ public class AlunoController extends HttpServlet {
 	protected void doPost (HttpServletRequest request,
 			 HttpServletResponse response) throws ServletException, IOException{
 		String action = request.getParameter("action");
-		String pagina = "/consultaAlunos.jsp";
+		String pagina = "consultaAlunos.jsp";
 		
 		Aluno aluno = new Aluno();
 		
@@ -79,8 +79,13 @@ public class AlunoController extends HttpServlet {
 		AlunoDao dao = new AlunoDao();
 		
 		if (request.getParameter("action").equals("listar")) {
+			
 			List<Aluno> alunos = dao.todos();
+//			List<Aluno> alunos = new ArrayList<>();
+//			alunos = dao.todos();
 			request.setAttribute("alunos", alunos);
+			request.getRequestDispatcher("consultaAlunos.jsp").forward(request, response);
+			
 		}else if (request.getParameter("action").equals("editando")) {
 			String id = request.getParameter("id");
 			int idAluno = Integer.parseInt(id);
